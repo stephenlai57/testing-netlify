@@ -5,7 +5,7 @@ import './globals.css';
 
 const fetchData = async () => {
   try {
-    const response = await fetch('https://node-express-api-dot-ixc2024-433215.as.r.appspot.com/balance/0e78506e-f4ec-4374-9d3b-bcb74f9e87c3'); // Adjust this endpoint as needed
+    const response = await fetch('https://node-express-api-dot-ixc2024-433215.as.r.appspot.com/api/balance/0e78506e-f4ec-4374-9d3b-bcb74f9e87c3'); // Adjust this endpoint as needed
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
