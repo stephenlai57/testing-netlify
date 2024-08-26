@@ -80,12 +80,13 @@ export default function Home() {
 
       <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Transaction History</h2>
+        <h2 className="text-xl font-semibold mb-4">Sent Contracts</h2>
         <table className="w-full text-left">
           <thead>
             <tr className="bg-blue-600 text-white">
               <th className="py-2 px-4">Contract ID</th>
-              <th className="py-2 px-4">Sender ID</th>
-              <th className="py-2 px-4">Receiver ID</th>
+              <th className="py-2 px-4">Sender Name</th>
+              <th className="py-2 px-4">Receiver Name</th>
               <th className="py-2 px-4">Currency</th>
               <th className="py-2 px-4">Amount</th>
               <th className="py-2 px-4">Status</th>
@@ -105,6 +106,22 @@ export default function Home() {
                 <td className="py-2 px-4">{new Date(transaction.createdAt).toLocaleString()}</td>
               </tr>
             ))}
+          </tbody>
+        </table>
+        <h2 className="text-xl font-semibold mb-4">Received Contracts</h2>
+        <table className="w-full text-left">
+          <thead>
+            <tr className="bg-blue-600 text-white">
+              <th className="py-2 px-4">Contract ID</th>
+              <th className="py-2 px-4">Sender Name</th>
+              <th className="py-2 px-4">Receiver Name</th>
+              <th className="py-2 px-4">Currency</th>
+              <th className="py-2 px-4">Amount</th>
+              <th className="py-2 px-4">Status</th>
+              <th className="py-2 px-4">Date</th>
+            </tr>
+          </thead>
+          <tbody>
             {/* Received Contracts */}
             {bankingInfo.wallet.unique.receivedContracts.map((transaction) => (
               <tr key={transaction.contract_id} className="border-t">
@@ -123,3 +140,4 @@ export default function Home() {
     </div>
   );
 }
+
