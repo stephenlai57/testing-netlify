@@ -62,7 +62,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <header className="w-full max-w-5xl bg-blue-600 text-white flex justify-between items-center p-4 rounded-lg mb-6">
         <div className="text-lg font-semibold">
-          User Account: {bankingInfo.wallet.unique.unique_id}
+          User Name: {bankingInfo.name}
         </div>
         <button className="bg-white text-blue-600 px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 transition">
           Sign Out
@@ -84,7 +84,7 @@ export default function Home() {
         <table className="w-full text-left">
           <thead>
             <tr className="bg-blue-600 text-white">
-              <th className="py-2 px-4">Contract ID</th>
+              {/* <th className="py-2 px-4">Contract ID</th> */}
               <th className="py-2 px-4">Sender Name</th>
               <th className="py-2 px-4">Receiver Name</th>
               <th className="py-2 px-4">Currency</th>
@@ -95,11 +95,11 @@ export default function Home() {
           </thead>
           <tbody>
             {/* Sent Contracts */}
-            {bankingInfo.wallet.unique.sentContracts.map((transaction) => (
+            {bankingInfo.wallet.unique.sentContracts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((transaction) => (
               <tr key={transaction.contract_id} className="border-t">
-                <td className="py-2 px-4">{transaction.contract_id}</td>
-                <td className="py-2 px-4">{transaction.sender_unique_id}</td>
-                <td className="py-2 px-4">{transaction.receiver_unique_id}</td>
+                {/* <td className="py-2 px-4">{transaction.contract_id}</td> */}
+                <td className="py-2 px-4">{bankingInfo.name}</td>
+                <td className="py-2 px-4">{transaction.receiver.Wallet.user.name}</td>
                 <td className="py-2 px-4">{transaction.currency}</td>
                 <td className="py-2 px-4">{transaction.amount}</td>
                 <td className="py-2 px-4">{transaction.status}</td>
@@ -112,7 +112,7 @@ export default function Home() {
         <table className="w-full text-left">
           <thead>
             <tr className="bg-blue-600 text-white">
-              <th className="py-2 px-4">Contract ID</th>
+              {/* <th className="py-2 px-4">Contract ID</th> */}
               <th className="py-2 px-4">Sender Name</th>
               <th className="py-2 px-4">Receiver Name</th>
               <th className="py-2 px-4">Currency</th>
@@ -123,11 +123,11 @@ export default function Home() {
           </thead>
           <tbody>
             {/* Received Contracts */}
-            {bankingInfo.wallet.unique.receivedContracts.map((transaction) => (
+            {bankingInfo.wallet.unique.receivedContracts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((transaction) => (
               <tr key={transaction.contract_id} className="border-t">
-                <td className="py-2 px-4">{transaction.contract_id}</td>
-                <td className="py-2 px-4">{transaction.sender_unique_id}</td>
-                <td className="py-2 px-4">{transaction.receiver_unique_id}</td>
+                {/* <td className="py-2 px-4">{transaction.contract_id}</td> */}
+                <td className="py-2 px-4">{transaction.sender.Wallet.user.name}</td>
+                <td className="py-2 px-4">{bankingInfo.name}</td>
                 <td className="py-2 px-4">{transaction.currency}</td>
                 <td className="py-2 px-4">{transaction.amount}</td>
                 <td className="py-2 px-4">{transaction.status}</td>
